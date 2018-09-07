@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'katarinas-login',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
   isSitter: boolean;
+  loginForm: FormGroup;
+  
 
 
-  constructor() {
+  constructor(private fb: FormBuilder) {
+
+    this.loginForm = this.fb.group({
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      password: ['', Validators.required]
+    });
+
     console.log("I am running the constructor");
   }
 
@@ -17,8 +26,14 @@ export class LoginComponent implements OnInit {
     this.isSitter = true;
   }
 
-  onSubmitLogin() {
-    alert("You clicked login")
+  onSubmitLogin(loginForm) {
+    if (loginForm.value.valid) {
+      alert("Yes it is valid");
+    } else {
+      alert("No not valid");
+    }
+    // console.log(loginForm);
+    // alert("You clicked login")
   }
 
   sayHi() {
