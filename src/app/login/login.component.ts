@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'katarinas-login',
@@ -11,8 +13,8 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   
 
-
-  constructor(private fb: FormBuilder) {
+  // Dependency injection
+  constructor(private fb: FormBuilder, private router: Router, private authService: AuthService) {
 
     this.loginForm = this.fb.group({
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
@@ -27,9 +29,15 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitLogin(loginForm) {
-    if (loginForm.value.valid) {
+    console.log(loginForm);
+    if (loginForm.valid) {
       // Call an api to validate the login.
-      alert("Yes it is valid");
+
+      this.authService.login().subscribe(val => {
+        console.log(val);
+        this.router.navigate(['portal']) // We might want to route to "portal".
+      });
+
     } else {
       alert("No not valid");
     }

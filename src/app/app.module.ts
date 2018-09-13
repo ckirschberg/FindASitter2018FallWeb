@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
 import { AComponent } from './home/a/a.component';
 import { BComponent } from './home/b/b.component';
+import { PortalComponent } from './portal/portal.component';
+import { FindASitterComponent } from './portal/find-a-sitter/find-a-sitter.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { BComponent } from './home/b/b.component';
     HomeComponent,
     ContactComponent,
     AComponent,
-    BComponent
+    BComponent,
+    PortalComponent,
+    FindASitterComponent
   ],
   imports: [
     BrowserModule,
