@@ -10,13 +10,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatInputModule} from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
 import { ContactComponent } from './contact/contact.component';
+import { AComponent } from './home/a/a.component';
+import { BComponent } from './home/b/b.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    ContactComponent
+    ContactComponent,
+    AComponent,
+    BComponent
   ],
   imports: [
     BrowserModule,
