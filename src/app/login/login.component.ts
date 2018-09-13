@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin(loginForm) {
     if (loginForm.value.valid) {
+      // Call an api to validate the login.
       alert("Yes it is valid");
     } else {
       alert("No not valid");

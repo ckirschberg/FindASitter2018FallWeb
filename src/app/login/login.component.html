@@ -1,24 +1,26 @@
 <form novalidate [formGroup]="loginForm" 
   (ngSubmit)="onSubmitLogin(loginForm)" >
 
-  <div>
-    <label for="username">Username</label>
-    <input name="username" type="text" formControlName="username">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Username" name="username" formControlName="username">
+
+    <mat-error *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.required">
+      Username is required
+    </mat-error>
+    <mat-error *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.minlength">
+      Minimum username length is 3 characters
+    </mat-error>    
+  </mat-form-field>
+
+  
+  
+  <div *ngIf="isSitter">
+    Yes it is a sitter
   </div>
 
-  <div *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.required">
-    Username is required
-  </div>
-  <div *ngIf="loginForm.controls.username.touched && loginForm.controls.username.errors?.minlength">
-    Minimum username length is 3 characters
-  </div>
-
-
-
-  <div>
-    <label for="password">Password</label>
-    <input name="password" type="password" formControlName="password">
-  </div>
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Password" name="password" formControlName="password">
+  </mat-form-field>
   
   <div *ngIf="loginForm.controls.password.touched && !loginForm.controls.password.valid">
     password is required
