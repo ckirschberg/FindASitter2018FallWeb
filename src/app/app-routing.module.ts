@@ -8,10 +8,12 @@ import { PortalComponent } from './portal/portal.component';
 import { FindASitterComponent } from './portal/find-a-sitter/find-a-sitter.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
   {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent, children: [
     {path: 'a', component: AComponent},
     {path: 'b', component: BComponent}
