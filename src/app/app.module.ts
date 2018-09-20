@@ -16,6 +16,7 @@ import { PortalComponent } from './portal/portal.component';
 import { FindASitterComponent } from './portal/find-a-sitter/find-a-sitter.component';
 import { RegisterComponent } from './register/register.component';
 import { SitterListComponent } from './sitter-list/sitter-list.component';
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { SitterListComponent } from './sitter-list/sitter-list.component';
     AppRoutingModule,
     ReactiveFormsModule, // now I can use ReactiveForms.
     BrowserAnimationsModule ,
-    MatInputModule
+    MatInputModule, MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]

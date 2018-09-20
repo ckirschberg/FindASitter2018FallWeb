@@ -12,7 +12,7 @@ export class SitterListComponent implements OnInit {
 
   // DI - Dependency injection
   constructor(private tempData: TempDataService) { 
-    this.sitters = tempData.sitters;
+    this.sitters = tempData.getSitters();
   }
 
   ngOnInit() {

@@ -5,7 +5,7 @@ import { Sitter } from './entities/sitter';
   providedIn: 'root'
 })
 export class TempDataService {
-  sitters: Sitter[] = [
+  private sitters: Sitter[] = [
     {
       sitterId: '1', 
       email: 'sitter1@sitter.dk', 
@@ -78,4 +78,13 @@ export class TempDataService {
   ];
 
   constructor() { }
+
+  public getSitters() : Sitter[] {
+    return this.sitters;
+  }
+
+  public addSitter(sitter: Sitter) {
+    this.sitters.push(sitter);
+  }
+
 }
