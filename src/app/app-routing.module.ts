@@ -1,3 +1,4 @@
+import { SitterListComponent } from './sitter-list/sitter-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
@@ -12,16 +13,17 @@ import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full' },
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
   {path: 'home', component: HomeComponent, children: [
     {path: 'a', component: AComponent},
-    {path: 'b', component: BComponent}
+    {path: 'b', component: BComponent},
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
+    {path: 'contact', component: ContactComponent}
   ]},
   {path: 'portal', component: PortalComponent, children: [
-    {path: 'find-a-sitter', component: FindASitterComponent, canActivate: [AuthGuard]}
+    {path: 'find-a-sitter', component: SitterListComponent, canActivate: [AuthGuard]}
   ]},
-  {path: 'contact', component: ContactComponent},
+  
 ];
 
 @NgModule({

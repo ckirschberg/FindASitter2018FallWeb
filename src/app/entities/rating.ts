@@ -1,6 +1,6 @@
 export class Rating {
   rating: number; // 1-5 (stars)
-  description: String;
+  description?: String;
 }
 
 export class BabyRating extends Rating {

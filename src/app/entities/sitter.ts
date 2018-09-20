@@ -8,8 +8,8 @@ export class Sitter {
   firstname: String;
   lastname: String;
   education: String;
-  picture: String;
-  description: String;
+  picture?: String;
+  description?: String;
   location: String;
   rating: SitterRating[];
   phone: String;

@@ -15,6 +15,7 @@ import { BComponent } from './home/b/b.component';
 import { PortalComponent } from './portal/portal.component';
 import { FindASitterComponent } from './portal/find-a-sitter/find-a-sitter.component';
 import { RegisterComponent } from './register/register.component';
+import { SitterListComponent } from './sitter-list/sitter-list.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { RegisterComponent } from './register/register.component';
     BComponent,
     PortalComponent,
     FindASitterComponent,
-    RegisterComponent
+    RegisterComponent,
+    SitterListComponent
   ],
   imports: [
     BrowserModule,
