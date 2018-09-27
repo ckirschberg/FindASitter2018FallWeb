@@ -24,7 +24,11 @@ export class EditSitterComponent implements OnInit {
 
       // Based on the id, retrieve the sitter-object from the temp-data service.
       // and populate the form with the data. (firstname, lastname, location). 
+      // When a user clicks the "save"-button, the sitter's data should be 
+      // replaced in the temp-data service.
     });
+
+    
   }
 
   onSubmit(editForm) {
