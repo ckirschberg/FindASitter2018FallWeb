@@ -19,19 +19,37 @@ describe('Testing my Sitters page', () => {
     // 7: Count number of sitters (we call it b)
     // 8: Expect  (b-a) = 1
     
-    page.login();  
+    // browser.sleep(2000);
+    page.login();  // 0
+    // browser.sleep(5000);
     // browser.waitForAngular();
-    $$('#btnFindSitter').click();
+    $$('#btnFindSitter').click(); // 1
 
     // count elements 
-    $$('.example-card').then(function(res) {
+    $$('.example-card').then(function(sittersBefore) {
     // let res = await element.all(by.css('.example-card'));
-    console.log(res.length);
-      // elemsAfter will be a number specifying how many elements of .yourCssClassHere there are in the page.
+      let sittersCountBefore = sittersBefore.length;
+      
+      $$('#btnRegister').click(); // 3
 
-      // Insert expect statements here..
-      expect(true).toBeFalsy();
+      //4.
+      $$('#firstname').sendKeys('Martin');
+      $$('#lastname').sendKeys('Petersen');
+      $$('#btnRegister').click(); // 5
+
+      // page.login(); // reloads page!!!
+      $$('#menuLogin').click();
+      element(by.name('username')).sendKeys("rabbababab");
+      element(by.name('password')).sendKeys("rabbababab");
+      element(by.id('btnLogin')).click();
+      $$('#btnFindSitter').click();
+
+      $$('.example-card').then((sittersAfter) => {  // 7
+        let sittersCountAfter = sittersAfter.length;
+        // Insert expect statements here..
+        // browser.sleep(3000);
+        expect(sittersCountAfter - sittersCountBefore).toBe(1);
+      });
     });
-    
   });
 });

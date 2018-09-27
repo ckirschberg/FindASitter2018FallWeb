@@ -17,6 +17,7 @@ import { FindASitterComponent } from './portal/find-a-sitter/find-a-sitter.compo
 import { RegisterComponent } from './register/register.component';
 import { SitterListComponent } from './sitter-list/sitter-list.component';
 import {MatCardModule} from '@angular/material/card';
+import { EditSitterComponent } from './edit-sitter/edit-sitter.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import {MatCardModule} from '@angular/material/card';
     PortalComponent,
     FindASitterComponent,
     RegisterComponent,
-    SitterListComponent
+    SitterListComponent,
+    EditSitterComponent
   ],
   imports: [
     BrowserModule,

@@ -85,6 +85,7 @@ export class TempDataService {
 
   public addSitter(sitter: Sitter) {
     this.sitters.push(sitter);
+    // console.log(this.sitters);
   }
 
 }

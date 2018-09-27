@@ -1,3 +1,4 @@
+import { EditSitterComponent } from './edit-sitter/edit-sitter.component';
 import { SitterListComponent } from './sitter-list/sitter-list.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -20,8 +21,9 @@ const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {path: 'contact', component: ContactComponent}
   ]},
-  {path: 'portal', component: PortalComponent, children: [
-    {path: 'find-a-sitter', component: SitterListComponent, canActivate: [AuthGuard]}
+  {path: 'portal', component: PortalComponent, canActivate: [AuthGuard], children: [
+    {path: 'find-a-sitter', component: SitterListComponent},
+    {path: 'edit-sitter/:id', component: EditSitterComponent}
   ]},
   
 ];
