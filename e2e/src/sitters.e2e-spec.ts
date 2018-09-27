@@ -65,7 +65,27 @@ describe('Testing my Sitters page', () => {
     // Read the firstname and lastname (save to variables)
     // Expect name is different from before?
     // Expect name to be what we set it to be.
+    
+    $$('#menuPortal').click();
+    
+    $$('#btnFindSitter').click();
+    $$('.e2e-btnEdit').first().click();
+    $$('#firstname').getAttribute('value').then(function(textBefore) {
+      console.log(textBefore);
+      $$('#firstname').clear();
+      $$('#firstname').sendKeys('Random text')
+      $$('#btnEdit').click();
+      
+      $$('.e2e-btnEdit').first().click();
+      $$('#firstname').getAttribute('value').then(function(textAfter) {
+        console.log(textAfter);
+        expect(textBefore !== textAfter).toBe(true);
+      });
+    });
+    
 
+
+    
   });
 
   it('2.1: Should not have changed data, if we do not edit the input boxes ', () => {
