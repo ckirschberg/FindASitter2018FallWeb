@@ -30,7 +30,7 @@ describe('Testing my Sitters page', () => {
     // let res = await element.all(by.css('.example-card'));
       let sittersCountBefore = sittersBefore.length;
       
-      $$('#btnRegister').click(); // 3
+      $$('#menuRegister').click(); // 3
 
       //4.
       $$('#firstname').sendKeys('Martin');
