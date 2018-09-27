@@ -88,4 +88,21 @@ export class TempDataService {
     // console.log(this.sitters);
   }
 
+  public updateSitter(newValues: any, id: String) {
+    // console.log(x);
+    let index = this.sitters.findIndex(sitter => sitter.sitterId === id);
+
+    for (const key in newValues) {
+      if (newValues.hasOwnProperty(key)) {
+        this.sitters[index][key] = newValues[key];
+      }
+    }
+
+    console.log(this.sitters);
+
+  }
+
+  public getSitter(id: string) {
+    return this.sitters.find(sitter => sitter.sitterId === id);
+  }
 }

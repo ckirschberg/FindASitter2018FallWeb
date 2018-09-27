@@ -8,7 +8,7 @@ describe('Testing my Sitters page', () => {
     page = new AppPage();
   });
   
-  it('Add a new sitter sitters array', async() => {
+  it('1.0 Add a new sitter sitters array', async() => {
     // 0: Login
     // 1: Navigate to sitters-list component
     // 2: Count number of sitters by selecting ui-components. (we call it a)
@@ -51,5 +51,24 @@ describe('Testing my Sitters page', () => {
         expect(sittersCountAfter - sittersCountBefore).toBe(1);
       });
     });
+  });
+  
+  it('1.1: Try creating a new user with valid data, should not save', () => {
+
+  });
+
+  it('2.0: Should update a users name', () => {
+    // Navigate to find-a-sitter (login first)
+    // Click edit button on the first sitter
+    // Change the firstname and lastname (save to variables)
+    // Click the save/edit button
+    // Read the firstname and lastname (save to variables)
+    // Expect name is different from before?
+    // Expect name to be what we set it to be.
+
+  });
+
+  it('2.1: Should not have changed data, if we do not edit the input boxes ', () => {
+
   });
 });
