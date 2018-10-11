@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Sitter } from '../entities/sitter';
 
 @Component({
   selector: 'app-sitter',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sitter.component.scss']
 })
 export class SitterComponent implements OnInit {
+  @Input('data') sitter: Sitter;
+  @Output() whatEverIWant: EventEmitter<any> = new EventEmitter<any>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  shareSitter() : void {
+    this.whatEverIWant.emit(this.sitter);
   }
 
 }

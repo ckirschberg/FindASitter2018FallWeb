@@ -19,6 +19,11 @@ import { SitterListComponent } from './sitter-list/sitter-list.component';
 import {MatCardModule} from '@angular/material/card';
 import { EditSitterComponent } from './edit-sitter/edit-sitter.component';
 import { SitterComponent } from './sitter/sitter.component';
+import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store';
+import { IAppState } from './store';
+import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
+import { rootReducer } from './store'; // Added this to get the root reducer
+
 
 @NgModule({
   declarations: [
@@ -40,9 +45,21 @@ import { SitterComponent } from './sitter/sitter.component';
     AppRoutingModule,
     ReactiveFormsModule, // now I can use ReactiveForms.
     BrowserAnimationsModule ,
-    MatInputModule, MatCardModule
+    MatInputModule, MatCardModule,
+    NgReduxModule,   NgReduxRouterModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private ngRedux: NgRedux<IAppState>,
+    private devTool: DevToolsExtension,
+    private ngReduxRouter: NgReduxRouter,) {
+   
+    this.ngRedux.configureStore(
+      rootReducer, {});
+ 
+      ngReduxRouter.initialize(/* args */);   
+  }
+ 
+ }

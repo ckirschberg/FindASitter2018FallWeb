@@ -5,6 +5,7 @@
 
 <div class="card-container">
   <div *ngFor="let sitter of sitters">
-    <app-sitter></app-sitter>
+    <app-sitter [data]="sitter" 
+    (whatEverIWant)="whatEverYouLike($event)"></app-sitter>
   </div>
 </div>

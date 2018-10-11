@@ -13,6 +13,6 @@
   <mat-card-actions>
     <button mat-button class="e2e-btnEdit"
     [routerLink]="['../edit-sitter', sitter.sitterId]">Edit</button>
-    <button mat-button>SHARE</button>
+    <button mat-button (click)="shareSitter()">SHARE</button>
   </mat-card-actions>
 </mat-card>

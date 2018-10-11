@@ -1,6 +1,15 @@
-<p>
-  register works!
-</p>
+
+<button (click)="sittersActions.setType(false)">Register as a sitter</button>
+<button (click)="sittersActions.setType(true)">Register as a baby</button>
+
+<div *ngIf="!isBaby && isBaby !== undefined">
+  This is a sitter registering
+</div>
+
+<div *ngIf="isBaby">
+  This is a baby registering
+</div>
+
 <form novalidate [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm)">
   <input id="firstname" name="firstname" formControlName="firstname" placeholder="firstname">
   <input id="lastname" name="lastname" formControlName="lastname" placeholder="lastname">

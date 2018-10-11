@@ -18,4 +18,8 @@ export class SitterListComponent implements OnInit {
   ngOnInit() {
   }
 
+  whatEverYouLike(sitter) {
+    console.log(sitter);
+  }
+
 }
