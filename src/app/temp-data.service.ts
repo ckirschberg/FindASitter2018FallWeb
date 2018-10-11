@@ -5,7 +5,7 @@ import { Sitter } from './entities/sitter';
   providedIn: 'root'
 })
 export class TempDataService {
-  private sitters: Sitter[] = [
+  private static sitters: Sitter[] = [
     {
       sitterId: '1', 
       email: 'sitter1@sitter.dk', 
@@ -79,30 +79,30 @@ export class TempDataService {
 
   constructor() { }
 
-  public getSitters() : Sitter[] {
-    return this.sitters;
+  public static getSitters() : Sitter[] {
+    return TempDataService.sitters;
   }
 
   public addSitter(sitter: Sitter) {
-    this.sitters.push(sitter);
+    TempDataService.sitters.push(sitter);
     // console.log(this.sitters);
   }
 
   public updateSitter(newValues: any, id: String) {
     // console.log(x);
-    let index = this.sitters.findIndex(sitter => sitter.sitterId === id);
+    let index = TempDataService.sitters.findIndex(sitter => sitter.sitterId === id);
 
     for (const key in newValues) {
       if (newValues.hasOwnProperty(key)) {
-        this.sitters[index][key] = newValues[key];
+        TempDataService.sitters[index][key] = newValues[key];
       }
     }
 
-    console.log(this.sitters);
+    console.log(TempDataService.sitters);
 
   }
 
   public getSitter(id: string) {
-    return this.sitters.find(sitter => sitter.sitterId === id);
+    return TempDataService.sitters.find(sitter => sitter.sitterId === id);
   }
 }

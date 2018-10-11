@@ -35,7 +35,9 @@ export class RegisterComponent implements OnInit {
   onSubmit(registerForm) {
     console.log(registerForm);
     let sitter = registerForm.value as Sitter;
-    
-    this.tempData.addSitter(sitter);
+    // this.tempData.addSitter(sitter);
+
+    this.sittersActions.createSitter(sitter);
+
   }
 }

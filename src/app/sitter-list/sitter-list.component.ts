@@ -1,6 +1,8 @@
 import { TempDataService } from './../temp-data.service';
 import { Component, OnInit } from '@angular/core';
 import { Sitter } from '../entities/sitter';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '../store';
 
 @Component({
   selector: 'app-sitter-list',
@@ -11,11 +13,16 @@ export class SitterListComponent implements OnInit {
   sitters: Sitter[];
 
   // DI - Dependency injection
-  constructor(private tempData: TempDataService) { 
-    this.sitters = tempData.getSitters();
+  constructor(private tempData: TempDataService, 
+    private ngRedux: NgRedux<IAppState>) { 
+    // this.sitters = tempData.getSitters();
   }
 
   ngOnInit() {
+    this.ngRedux.select(res => res.sitters).subscribe((data) => {
+      console.log("redux says: ", data);
+      this.sitters = data.sitters;
+    })
   }
 
   whatEverYouLike(sitter) {

@@ -17,7 +17,8 @@ export class SittersActions {
   
   createSitter(sitter: Sitter):void {
     this.ngRedux.dispatch({
-      
+      type: SittersActions.CREATE_SITTER,
+      payload: sitter
     } as any)
   }
 
