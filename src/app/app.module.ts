@@ -18,6 +18,7 @@ import { RegisterComponent } from './register/register.component';
 import { SitterListComponent } from './sitter-list/sitter-list.component';
 import {MatCardModule} from '@angular/material/card';
 import { EditSitterComponent } from './edit-sitter/edit-sitter.component';
+import { SitterComponent } from './sitter/sitter.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EditSitterComponent } from './edit-sitter/edit-sitter.component';
     FindASitterComponent,
     RegisterComponent,
     SitterListComponent,
-    EditSitterComponent
+    EditSitterComponent,
+    SitterComponent
   ],
   imports: [
     BrowserModule,
