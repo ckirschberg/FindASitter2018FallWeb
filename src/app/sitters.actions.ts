@@ -14,12 +14,21 @@ export class SittersActions {
 
   static SET_IS_BABY: string = 'SET_IS_BABY'; 
   static CREATE_SITTER: string = 'CREATE_SITTER'; 
+  static DELETE_SITTER: string = 'DELETE_SITTER'; 
   
   createSitter(sitter: Sitter):void {
     this.ngRedux.dispatch({
       type: SittersActions.CREATE_SITTER,
       payload: sitter
     } as any)
+  }
+
+  deleteSitter(id: String) : void {
+    console.log("calling deleteSitter" + id);
+    this.ngRedux.dispatch({
+      type: SittersActions.DELETE_SITTER,
+      payload: id
+    })
   }
 
   setType(isBaby: boolean): void {

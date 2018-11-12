@@ -1,5 +1,7 @@
+import { SittersActions } from './../sitters.actions';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Sitter } from '../entities/sitter';
+
 
 @Component({
   selector: 'app-sitter',
@@ -10,7 +12,7 @@ export class SitterComponent implements OnInit {
   @Input('data') sitter: Sitter;
   @Output() whatEverIWant: EventEmitter<any> = new EventEmitter<any>();
 
-  constructor() { }
+  constructor(private sitterActions: SittersActions) { }
 
   ngOnInit() {
   }

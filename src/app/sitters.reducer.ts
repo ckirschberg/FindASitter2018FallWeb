@@ -3,7 +3,7 @@ import { tassign } from 'tassign';
 import { SittersActions } from './sitters.actions';
 import { SittersState } from './store';
 
-const INITIAL_STATE: SittersState = {isBaby: undefined, sitters: [] }; // TempDataService.getSitters()
+const INITIAL_STATE: SittersState = {isBaby: undefined, sitters: TempDataService.getSitters() }; // 
 
 export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) {
  switch (action.type) {
@@ -17,6 +17,9 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
     const newArray = [...state.sitters, action.payload]; 
     console.log(newArray);
     return tassign(state, {sitters: newArray });
+
+  case SittersActions.DELETE_SITTER: // action.payload is an id: String
+    return tassign(state, {sitters: state.sitters.filter(x => x.sitterId !== action.payload)});
 
   case SittersActions.SET_IS_BABY:
     // pure function

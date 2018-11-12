@@ -14,5 +14,6 @@
     <button mat-button class="e2e-btnEdit"
     [routerLink]="['../edit-sitter', sitter.sitterId]">Edit</button>
     <button mat-button (click)="shareSitter()">SHARE</button>
+    <button mat-button (click)="sitterActions.deleteSitter(sitter.sitterId)">Delete Sitter</button>
   </mat-card-actions>
 </mat-card>
