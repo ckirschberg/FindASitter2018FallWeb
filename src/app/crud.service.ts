@@ -6,17 +6,25 @@ import { Sitter } from './entities/sitter';
   providedIn: 'root'
 })
 export class CrudService {
-  private baseUrl: String  = "http://angular2api1.azurewebsites.net/api/internships/"
+  private baseUrl: string  = "http://angular2api2.azurewebsites.net/api/internships/"
 
   constructor(private http: HttpClient) { }
 
   getAllSitters() {
-    return this.http.get(this.baseUrl + 'GetAll');
+    return this.http.get(this.baseUrl);
   }  
 
   createSitter(sitter: Sitter) {
     sitter.customerId = 'chrk';
     return this.http.post(this.baseUrl + 'Create', sitter, {responseType: 'text'});
+  }
+
+  updateSitter(sitter: Sitter) {
+    return this.http.put(this.baseUrl + sitter.sitterId, sitter, {responseType: 'text'});
+  }
+
+  deleteSitter(sitterId: string) {
+    return this.http.delete(this.baseUrl + sitterId);
   }
 
 

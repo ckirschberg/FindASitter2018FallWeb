@@ -2,7 +2,7 @@
 
 <!-- Instead: Create a loop that generates a card or row or something for each sitter object -->
 
-
+<div *ngIf="errorMessage">{{errorMessage}}</div>
 <div class="card-container">
   <div *ngFor="let sitter of sitters">
     <app-sitter [data]="sitter" 
