@@ -41,4 +41,41 @@ describe('sitters reducer', () => {
     expect( newState ).toEqual( afterStateShouldBe );
   });
 
+  it('should update a sitter object', () => {
+    //1: create our initial state
+    //2: use deep freeze
+    //3: Expect the newly returned state from the reducer to have the modified sitter
+    let state = { isBaby: undefined, sitters: TempDataService.getOriginalSitters() };
+    deepFreeze(state);
+    const updatedSitterObject = {
+      sitterId: '2', 
+      email: 'sitter2@sitter.dk', 
+      birthDate: new Date(1979, 1, 1), 
+      gender: 'male', 
+      firstname: 'Adam', 
+      lastname: 'Antal', 
+      education: 'PBA Web Development', 
+      description: "I have two children", 
+      location: 'Hillerød', 
+      phone: '87654321',
+      rating: [
+        {
+          parentId: 's1', 
+          rating: 4, 
+        }, 
+        {
+          parentId: 's2', 
+          rating: 4, 
+        }],
+        schedule: undefined
+      };
+
+    let afterStateShouldBe = {isBaby: undefined, sitters: TempDataService.getOriginalSitters()};
+    afterStateShouldBe.sitters[1] = updatedSitterObject;
+
+    let newState = sittersReducer(state, { type: types.SittersActions.UPDATE_SITTER, payload: updatedSitterObject});
+    expect( newState ).toEqual( afterStateShouldBe );
+  });
+
+
 });

@@ -15,7 +15,15 @@ export class SittersActions {
   static SET_IS_BABY: string = 'SET_IS_BABY'; 
   static CREATE_SITTER: string = 'CREATE_SITTER'; 
   static DELETE_SITTER: string = 'DELETE_SITTER'; 
-  
+  static UPDATE_SITTER: string = 'UPDATE_SITTER'; 
+ 
+  updateSitter(id: String, updatedSitter: Sitter) {
+    this.ngRedux.dispatch({
+      type: SittersActions.UPDATE_SITTER,
+      payload: updatedSitter
+    });
+  }
+
   createSitter(sitter: Sitter):void {
     this.ngRedux.dispatch({
       type: SittersActions.CREATE_SITTER,

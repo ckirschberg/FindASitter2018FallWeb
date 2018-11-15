@@ -23,6 +23,7 @@ import { NgRedux, DevToolsExtension, NgReduxModule } from '@angular-redux/store'
 import { IAppState } from './store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { rootReducer } from './store'; // Added this to get the root reducer
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { rootReducer } from './store'; // Added this to get the root reducer
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule, // now I can use ReactiveForms.
     BrowserAnimationsModule ,

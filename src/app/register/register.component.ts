@@ -5,6 +5,7 @@ import { Sitter } from '../entities/sitter';
 import { SittersActions } from '../sitters.actions';
 import { IAppState } from '../store';
 import { NgRedux } from '@angular-redux/store';
+import { CrudService } from '../crud.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,8 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private tempData: TempDataService,
-    private sittersActions: SittersActions, private ngRedux: NgRedux<IAppState>) { }
+    private sittersActions: SittersActions, private ngRedux: NgRedux<IAppState>,
+    private crudService: CrudService) { }
   
 
   ngOnInit() {
@@ -39,5 +41,11 @@ export class RegisterComponent implements OnInit {
 
     this.sittersActions.createSitter(sitter);
 
+    //I will change this later...
+    this.crudService.createSitter(sitter).subscribe(result => {
+      console.log(result);
+    }, error => {
+      console.log(error);
+    });
   }
 }
