@@ -44,8 +44,8 @@ export class RegisterComponent implements OnInit {
     //I will change this later...
     this.crudService.createSitter(sitter).subscribe(result => {
       console.log(result);
-    }, error => {
-      console.log(error);
+    // }, error => {
+      // console.log(error);
     });
   }
 }

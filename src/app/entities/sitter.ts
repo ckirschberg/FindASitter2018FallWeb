@@ -2,6 +2,8 @@ import { BabyRating, SitterRating } from "./rating";
 
 export class Sitter {
   sitterId: String;
+  customerId?: String;
+  
   email: String;
   birthDate: Date;
   gender: String;

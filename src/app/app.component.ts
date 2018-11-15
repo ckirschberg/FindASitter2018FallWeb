@@ -1,5 +1,6 @@
 import { CrudService } from './crud.service';
 import { Component } from '@angular/core';
+import { Sitter } from './entities/sitter';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +15,9 @@ export class AppComponent {
     
     console.log("calling webservice");
     
-    this.crudService.getAllSitters().subscribe(result => {
-      console.log(result);
+    this.crudService.getAllSitters().subscribe((result:Sitter[]) => {
+      let myData = result.filter(sitter => sitter.customerId === 'chrk');
+      console.log(myData);
     });
 
     console.log("I am done calling the webservice");
