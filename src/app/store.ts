@@ -6,6 +6,11 @@ import { sittersReducer } from './sitters.reducer';
 import { Sitter } from './entities/sitter';
 
 export class SittersState {
+
+  static getEmptyState() {
+    return {isBaby: undefined, sitters: [], errorMessage: ''};
+  }
+
   isBaby: boolean;
   // We should store all our sitters here.
   // sitters: Immutable.List<Sitter>;

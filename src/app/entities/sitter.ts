@@ -4,19 +4,19 @@ export class Sitter {
   sitterId: String;
   customerId?: String;
   
-  email: String;
-  birthDate: Date;
-  gender: String;
+  email?: String;
+  birthDate?: Date;
+  gender?: String;
   firstname: String;
   lastname: String;
-  education: String;
+  education?: String;
   picture?: String;
   description?: String;
   location: String;
-  rating: SitterRating[];
-  phone: String;
+  rating?: SitterRating[];
+  phone?: String;
 
-  schedule: any; // switch off ts-typesystem.
+  schedule?: any; // switch off ts-typesystem.
 
 
 }
