@@ -12,6 +12,8 @@ import { IAppState } from '../store';
 export class SitterListComponent implements OnInit {
   sitters: Sitter[];
   errorMessage: String;
+  birthDate: Date = new Date(2018, 2, 1);
+  public search: string = '';
 
   // DI - Dependency injection
   constructor(private tempData: TempDataService, 
@@ -22,7 +24,7 @@ export class SitterListComponent implements OnInit {
   ngOnInit() {
     this.ngRedux.select(res => res.sitters).subscribe((data) => {
       console.log("redux says: ", data);
-      this.sitters = data.sitters.toArray();
+      this.sitters = data.sitters;
       this.errorMessage = data.errorMessage;
     })
   }

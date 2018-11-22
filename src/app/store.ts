@@ -8,7 +8,8 @@ import { Sitter } from './entities/sitter';
 export class SittersState {
   isBaby: boolean;
   // We should store all our sitters here.
-  sitters: Immutable.List<Sitter>;
+  // sitters: Immutable.List<Sitter>;
+  sitters: Sitter[];
   errorMessage: String;
 }
 export class IAppState {

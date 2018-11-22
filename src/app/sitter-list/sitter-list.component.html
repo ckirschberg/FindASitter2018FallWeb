@@ -1,10 +1,18 @@
 <!-- {{sitters[0].firstname}} -->
 
 <!-- Instead: Create a loop that generates a card or row or something for each sitter object -->
+{{birthDate | date | lowercase }}
+{{ 0.743 | percent }}
+{{ 132 | currency:'DKK' }}
+
+<mat-form-field >
+  <input matInput placeholder="Search for a sitter" 
+    [(ngModel)]="search" value="">
+</mat-form-field>
 
 <div *ngIf="errorMessage">{{errorMessage}}</div>
 <div class="card-container">
-  <div *ngFor="let sitter of sitters">
+  <div *ngFor="let sitter of sitters | filterSitters: search">
     <app-sitter [data]="sitter" 
     (whatEverIWant)="whatEverYouLike($event)"></app-sitter>
   </div>

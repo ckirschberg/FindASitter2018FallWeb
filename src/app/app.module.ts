@@ -1,3 +1,4 @@
+import { FilterSitters } from './sitter-list/sitters.filter';
 import { SittersEpics } from './sitters.epics';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -5,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatInputModule} from '@angular/material/input';
@@ -42,10 +43,11 @@ import { createLogger } from "redux-logger";
     RegisterComponent,
     SitterListComponent,
     EditSitterComponent,
-    SitterComponent
+    SitterComponent, FilterSitters
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     ReactiveFormsModule, // now I can use ReactiveForms.
@@ -62,16 +64,16 @@ export class AppModule {
     private ngReduxRouter: NgReduxRouter, 
     private sittersEpics: SittersEpics) {
    
-    const rootEpic = combineEpics(
-      // Each epic is referenced here.
-      this.sittersEpics.createSitter, //this.sittersEpics.updateSitter, ...  
-    );
-    const middleware = [
-      createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
-    ];
-    this.ngRedux.configureStore(rootReducer, {}, middleware, [ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+    // const rootEpic : any = combineEpics(
+    //   // Each epic is referenced here.
+    //   this.sittersEpics.createSitter, //this.sittersEpics.updateSitter, ...  
+    // );
+    // const middleware = [
+      // createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
+    // ];
+    // this.ngRedux.configureStore(rootReducer, {}, middleware, [ devTool.isEnabled() ? devTool.enhancer() : f => f]);
            
-      // this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+      this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
 
  
     ngReduxRouter.initialize(/* args */);   
