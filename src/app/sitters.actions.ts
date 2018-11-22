@@ -14,7 +14,11 @@ export class SittersActions {
     private ngRedux: NgRedux<IAppState>, private crudService: CrudService) {} 
 
   static SET_IS_BABY: string = 'SET_IS_BABY'; 
+  
   static CREATE_SITTER: string = 'CREATE_SITTER'; 
+  static CREATE_SITTER_SUCCESS: string = 'CREATE_SITTER_SUCCESS'; 
+  static CREATE_SITTER_FAILURE: string = 'CREATE_SITTER_FAILURE'; 
+
   static DELETE_SITTER: string = 'DELETE_SITTER'; 
   static UPDATE_SITTER: string = 'UPDATE_SITTER'; 
   static FAILED_DELETE_SITTER: string = 'FAILED_DELETE_SITTER'; 
