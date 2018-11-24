@@ -21,9 +21,12 @@ import { Sitter } from '../entities/sitter';
 // 2.2: ...
 
 describe('App: Sitters Filter', () => {
- 
+  let sitters: Sitter[];
+  let filter = new FilterSitters(); // Arrange
 
   beforeEach(() => {
+    // sitters = 
+
    TestBed.configureTestingModule({
      declarations: [
        FilterSitters
@@ -33,7 +36,6 @@ describe('App: Sitters Filter', () => {
   
   it('1.0: Searching for per should give me one result (lowercase searching)', () => {
     // Arrage, Act, Assert
-    let filter = new FilterSitters(); // Arrange
     let sitters = [
       {sitterId: '11', firstname: 'Per', lastname: 'Hansen', location: 'Copenhagen'},
       {sitterId: '11', firstname: 'Jens', lastname: 'Hansen', location: 'Copenhagen'},
@@ -41,7 +43,6 @@ describe('App: Sitters Filter', () => {
       {sitterId: '13', firstname: 'Jørgen', lastname: 'Hansen', location: 'Hillerød'},
       {sitterId: '14', firstname: 'Berit', lastname: 'Hansen', location: 'Vejle'},
     ];
-
     let result = filter.transform(sitters, 'per'); // Act
     expect(result.length).toBe(1); //Assert (Expect)
     expect(result[0].firstname).toBe('Per');
