@@ -42,10 +42,10 @@ export class RegisterComponent implements OnInit {
     this.sittersActions.createSitter(sitter);
 
     //I will change this later...
-    this.crudService.createSitter(sitter).subscribe(result => {
-      console.log(result);
+    // this.crudService.createSitter(sitter).subscribe(result => {
+    //   console.log(result);
     // }, error => {
       // console.log(error);
-    });
+    // });
   }
 }

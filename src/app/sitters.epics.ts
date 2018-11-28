@@ -20,6 +20,7 @@ export class SittersEpics {
   createSitter = (action$: ActionsObservable<any>) => {
     return action$.ofType(SittersActions.CREATE_SITTER) // Listen for this action
       .mergeMap(({payload}) => { // payload: (sitter: Sitter): When this action is activated, call ws through service class or directly like below
+        console.log("epic says hi");
           return this.crudService.createSitter(payload)
             .map(result => ({ // when web service responds with success, call this action with payload that came back from webservice
               type: SittersActions.CREATE_SITTER_SUCCESS,

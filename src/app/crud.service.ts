@@ -26,6 +26,4 @@ export class CrudService {
   deleteSitter(sitterId: string) {
     return this.http.delete(this.baseUrl + sitterId);
   }
-
-
 }

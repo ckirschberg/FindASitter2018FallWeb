@@ -29,6 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { createEpicMiddleware, combineEpics } from "redux-observable";
 import { createLogger } from "redux-logger";
+import { createStore, applyMiddleware } from 'redux';
 
 @NgModule({
   declarations: [
@@ -64,16 +65,22 @@ export class AppModule {
     private ngReduxRouter: NgReduxRouter, 
     private sittersEpics: SittersEpics) {
    
-    // const rootEpic : any = combineEpics(
-    //   // Each epic is referenced here.
-    //   this.sittersEpics.createSitter, //this.sittersEpics.updateSitter, ...  
-    // );
+    const rootEpic : any = combineEpics(
+      // Each epic is referenced here.
+      this.sittersEpics.createSitter, //this.sittersEpics.updateSitter, ...  
+    );
     // const middleware = [
-      // createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
+    //   createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
     // ];
     // this.ngRedux.configureStore(rootReducer, {}, middleware, [ devTool.isEnabled() ? devTool.enhancer() : f => f]);
-           
-      this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
+
+    const epicMiddleware = createEpicMiddleware();
+    const store = createStore(rootReducer, applyMiddleware(epicMiddleware));
+
+    epicMiddleware.run(rootEpic);
+
+
+    this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
 
  
     ngReduxRouter.initialize(/* args */);   
