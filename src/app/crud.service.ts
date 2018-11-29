@@ -16,7 +16,7 @@ export class CrudService {
 
   createSitter(sitter: Sitter) {
     sitter.customerId = 'chrk';
-    return this.http.post(this.baseUrl + 'Create', sitter, {responseType: 'text'});
+    return this.http.post(this.baseUrl, sitter, {responseType: 'text'});
   }
 
   updateSitter(sitter: Sitter) {

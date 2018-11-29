@@ -16,6 +16,7 @@ export class SittersState {
   // sitters: Immutable.List<Sitter>;
   sitters: Sitter[];
   errorMessage: String;
+  isLoading: boolean;
 }
 export class IAppState {
   sitters?: SittersState;

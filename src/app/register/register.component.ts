@@ -15,6 +15,7 @@ import { CrudService } from '../crud.service';
 export class RegisterComponent implements OnInit {
   registerForm;
   isBaby: boolean; // local variable
+  isLoading: boolean; // local variable
 
 
   constructor(private fb: FormBuilder, private tempData: TempDataService,
@@ -26,6 +27,7 @@ export class RegisterComponent implements OnInit {
     this.ngRedux.select(res => res.sitters).subscribe((data) => {
       console.log("redux says: ", data);
       this.isBaby = data.isBaby;
+      this.isLoading = data.isLoading;
     })
 
     this.registerForm = this.fb.group({

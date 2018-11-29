@@ -26,6 +26,8 @@ import { IAppState } from './store';
 import { NgReduxRouter, NgReduxRouterModule } from '@angular-redux/router';
 import { rootReducer } from './store'; // Added this to get the root reducer
 import { HttpClientModule } from '@angular/common/http';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatButtonModule} from '@angular/material/button';
 
 import { createEpicMiddleware, combineEpics } from "redux-observable";
 import { createLogger } from "redux-logger";
@@ -53,7 +55,7 @@ import { createStore, applyMiddleware } from 'redux';
     AppRoutingModule,
     ReactiveFormsModule, // now I can use ReactiveForms.
     BrowserAnimationsModule ,
-    MatInputModule, MatCardModule,
+    MatInputModule, MatCardModule, MatProgressSpinnerModule, MatButtonModule,
     NgReduxModule,   NgReduxRouterModule.forRoot()
   ],
   providers: [],
@@ -62,24 +64,8 @@ import { createStore, applyMiddleware } from 'redux';
 export class AppModule {
   constructor(private ngRedux: NgRedux<IAppState>,
     private devTool: DevToolsExtension,
-    private ngReduxRouter: NgReduxRouter, 
-    private sittersEpics: SittersEpics) {
+    private ngReduxRouter: NgReduxRouter) {
    
-    const rootEpic : any = combineEpics(
-      // Each epic is referenced here.
-      this.sittersEpics.createSitter, //this.sittersEpics.updateSitter, ...  
-    );
-    // const middleware = [
-    //   createEpicMiddleware(rootEpic), createLogger({ level: 'info', collapsed: true })
-    // ];
-    // this.ngRedux.configureStore(rootReducer, {}, middleware, [ devTool.isEnabled() ? devTool.enhancer() : f => f]);
-
-    const epicMiddleware = createEpicMiddleware();
-    const store = createStore(rootReducer, applyMiddleware(epicMiddleware));
-
-    epicMiddleware.run(rootEpic);
-
-
     this.ngRedux.configureStore(rootReducer, {}, [],[ devTool.isEnabled() ? devTool.enhancer() : f => f]);
 
  

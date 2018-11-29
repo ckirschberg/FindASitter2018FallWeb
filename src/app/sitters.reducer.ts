@@ -6,7 +6,7 @@ import { SittersActions } from './sitters.actions';
 import { SittersState } from './store';
 import { Sitter } from './entities/sitter';
 
-const INITIAL_STATE: SittersState = {isBaby: undefined, sitters: TempDataService.getSitters(), errorMessage: '' }; // 
+const INITIAL_STATE: SittersState = {isBaby: undefined, sitters: TempDataService.getSitters(), errorMessage: '', isLoading: false }; // 
 
 export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) {
  switch (action.type) {
@@ -20,8 +20,14 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
     return state;
     // return tassign(state, { sitters: state.sitters.set(index, action.payload)});
 
-
   case SittersActions.CREATE_SITTER:
+    // return Object.assign({}, state, { isLoading: true });
+    return tassign(state, { isLoading: true });
+
+  case SittersActions.CREATE_SITTER_FAILURE:
+    return tassign(state, { isLoading: false });
+
+  case SittersActions.CREATE_SITTER_SUCCESS:
     // Write code to copy the array and add the new sitter to the copy.
     // sitter obj. should be in action.payload
     //state.sitters.push() // NoNo => modifies state.
@@ -30,7 +36,7 @@ export function sittersReducer(state: SittersState = INITIAL_STATE, action:any) 
     const newArray = [...state.sitters, action.payload]; 
     // console.log(newArray);
     // return tassign(state, {sitters: state.sitters.push(action.payload) });
-    return tassign(state, {sitters: newArray });
+    return tassign(state, {sitters: newArray, isLoading: false });
 
   case SittersActions.DELETE_SITTER: // action.payload is an id: String
     return tassign(state, {sitters: state.sitters.filter(x => x.sitterId !== action.payload)});

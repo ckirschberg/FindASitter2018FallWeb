@@ -14,5 +14,8 @@
   <input id="firstname" name="firstname" formControlName="firstname" placeholder="firstname">
   <input id="lastname" name="lastname" formControlName="lastname" placeholder="lastname">
 
-  <button id="btnRegister">Register</button>
+  <button mat-raised-button color="primary" id="btnRegister" 
+    [disabled]="isLoading">Register
+  </button>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
 </form>

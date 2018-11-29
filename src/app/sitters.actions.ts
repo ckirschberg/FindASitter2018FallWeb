@@ -32,14 +32,27 @@ export class SittersActions {
 
   createSitter(sitter: Sitter):void {
     this.ngRedux.dispatch({
-      type: SittersActions.CREATE_SITTER,
-      payload: sitter
+      type: SittersActions.CREATE_SITTER
     } as any)
+
+    this.crudService.createSitter(sitter).subscribe(result => {
+     // on success 
+     this.ngRedux.dispatch({
+       type: SittersActions.CREATE_SITTER_SUCCESS,
+       payload: sitter
+     })
+    }, error => {
+      // if web service call fails with an error.
+      this.ngRedux.dispatch({
+        type: SittersActions.CREATE_SITTER_FAILURE,
+        payload: error
+      });
+    });
   }
 
   deleteSitter(id: string) : void {
 
-    // Dont do this, use epics instead.
+    
     this.crudService.deleteSitter(id).subscribe(result => {
       console.log("1");
       this.ngRedux.dispatch({
